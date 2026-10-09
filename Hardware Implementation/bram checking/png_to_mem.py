@@ -2,7 +2,7 @@
 from PIL import Image
 
 # Change this to your input PNG filename
-INPUT_IMAGE = "underwater.png"
+INPUT_IMAGE = "input.png"
 OUTPUT_MEM = "image.mem"
 
 WIDTH = 256
