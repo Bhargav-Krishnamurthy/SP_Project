@@ -6,7 +6,7 @@ HEIGHT = 256
 
 pixels = []
 
-with open("readback.mem", "r") as f:
+with open("white_balance_output.mem", "r") as f:
     for line in f:
         line = line.strip()
         if line:
