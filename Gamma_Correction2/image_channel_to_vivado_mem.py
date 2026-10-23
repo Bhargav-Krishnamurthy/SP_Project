@@ -3,7 +3,7 @@ from pathlib import Path
 from PIL import Image
 
 # -------- USER SETTINGS --------
-INPUT_IMAGE = "input.png"
+INPUT_IMAGE = "white_balance_test.png"
 OUTPUT_MEM = "image_rgb_channels.mem"
 WIDTH = 256
 HEIGHT = 256

@@ -18,4 +18,4 @@ SIMULATION PASSED
 Output bytes: 196608
 Output file: gamma_corrected_rgb.mem
 ======================================
-$finish called at time : 3932230 ns : File "C:/Users/Adharvan K Bommagani/Desktop/SP_Project/Gamma_Correction2/Gamma_Correction_2/Gamma_Correction_2.srcs/sim_1/new/tb_gamma_image_processor.v" Line 93
+$finish called at time : 3932230 ns : File "C:/Users/Adharvan K Bommagani/Desktop/SP_Project/Gamma_Correction2/Gamma_Correction_Updated/Gamma_Correction_Updated.srcs/sim_1/new/tb_gamma_image_processor.v" Line 93
