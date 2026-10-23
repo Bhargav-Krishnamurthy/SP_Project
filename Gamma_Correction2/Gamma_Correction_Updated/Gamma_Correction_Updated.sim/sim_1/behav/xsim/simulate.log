@@ -1,0 +1,21 @@
+Time resolution is 1 ps
+Processing 256x256 RGB image...
+Processing 256x256 RGB image...
+Processed 16384 / 196608 bytes
+Processed 32768 / 196608 bytes
+Processed 49152 / 196608 bytes
+Processed 65536 / 196608 bytes
+Processed 81920 / 196608 bytes
+Processed 98304 / 196608 bytes
+Processed 114688 / 196608 bytes
+Processed 131072 / 196608 bytes
+Processed 147456 / 196608 bytes
+Processed 163840 / 196608 bytes
+Processed 180224 / 196608 bytes
+Processed 196608 / 196608 bytes
+======================================
+SIMULATION PASSED
+Output bytes: 196608
+Output file: gamma_corrected_rgb.mem
+======================================
+$finish called at time : 3932230 ns : File "C:/Users/Adharvan K Bommagani/Desktop/SP_Project/Gamma_Correction2/Gamma_Correction_2/Gamma_Correction_2.srcs/sim_1/new/tb_gamma_image_processor.v" Line 93
