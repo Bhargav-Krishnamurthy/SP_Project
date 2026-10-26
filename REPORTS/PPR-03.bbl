@@ -1,0 +1,38 @@
+\begin{thebibliography}{1}
+
+\bibitem{achanta2009frequency}
+Radhakrishna Achanta, Sheila Hemami, Francisco Estrada, and Sabine S{\"u}sstrunk.
+\newblock Frequency-tuned salient region detection.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}, pages 1597--1604, 2009.
+
+\bibitem{ancuti2018color}
+Codruta~O. Ancuti, Cosmin Ancuti, Christophe~De Vleeschouwer, and Philippe Bekaert.
+\newblock Color balance and fusion for underwater image enhancement.
+\newblock {\em IEEE Transactions on Image Processing}, 27(1):379--393, 2018.
+
+\bibitem{ancuti2012enhancing}
+Cosmin Ancuti, Codruta~Orniana Ancuti, Tom Haber, and Philippe Bekaert.
+\newblock Enhancing underwater images and videos by fusion.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}, pages 81--88, 2012.
+
+\bibitem{galdran2015automatic}
+Adrian Galdran, David Pardo, Artzai Pic{\'o}n, and Aitor Alvarez-Gila.
+\newblock Automatic red-channel underwater image restoration.
+\newblock {\em Journal of Visual Communication and Image Representation}, 26:132--145, 2015.
+
+\bibitem{he2009dark}
+Kaiming He, Jian Sun, and Xiaoou Tang.
+\newblock Single image haze removal using dark channel prior.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}, pages 1956--1963, 2009.
+
+\bibitem{li2020underwater}
+Chongyi Li, Chunle Guo, Wenqi Ren, Runmin Cong, Junhui Hou, Sam Kwong, and Dacheng Tao.
+\newblock An underwater image enhancement benchmark dataset and beyond.
+\newblock {\em IEEE Transactions on Image Processing}, 29:4376--4389, 2020.
+
+\bibitem{peng2017underwater}
+Yan-Tsung Peng and Pamela~C. Cosman.
+\newblock Underwater image restoration based on image blurriness and light absorption.
+\newblock {\em IEEE Transactions on Image Processing}, 26(4):1579--1594, 2017.
+
+\end{thebibliography}
