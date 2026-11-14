@@ -34,12 +34,12 @@ def white_balance(px):
 def gamma(px, lut):
     return [tuple(lut[c] for c in p) for p in px]
 
-def unsharp(px, W):
+def unsharp(px, W, beta_mode=1):
     H = len(px) // W
     K = ((1,2,1),(2,4,2),(1,2,1))
     def at(y, x):
         return px[min(max(y,0),H-1)*W + min(max(x,0),W-1)]
-    D = []
+    out = []
     for y in range(H):
         for x in range(W):
             c = px[y*W + x]
@@ -50,16 +50,20 @@ def unsharp(px, W):
                     n = at(y+dy, x+dx)
                     for ch in range(3):
                         acc[ch] += w * n[ch]
-            D.append(tuple(c[ch] - (acc[ch] >> 4) for ch in range(3)))
-    dmin = min(min(d) for d in D)
-    dmax = max(max(d) for d in D)
-    rng = dmax - dmin
-    out = []
-    for p, d in zip(px, D):
-        if rng == 0:
-            out.append(p)
-        else:
-            out.append(tuple((p[ch] + ((d[ch] - dmin) * 255) // rng) >> 1 for ch in range(3)))
+            p = []
+            for ch in range(3):
+                diff = c[ch] - (acc[ch] >> 4)
+                if beta_mode == 0:
+                    d_term = diff >> 1
+                elif beta_mode == 2:
+                    d_term = diff + (diff >> 1)
+                elif beta_mode == 3:
+                    d_term = diff << 1
+                else:
+                    d_term = diff
+                val = c[ch] + d_term
+                p.append(min(max(val, 0), 255))
+            out.append(tuple(p))
     return out
 
 SRGB_LUT = np.array([round(((i/255.0)/12.92 if (i/255.0)<=0.04045 else ((i/255.0+0.055)/1.055)**2.4)*4095.0) for i in range(256)], dtype=np.int64)
@@ -80,7 +84,7 @@ def rgb_to_lab_fp(blur_u8):
     bf = (200 * (fy - fz)) >> 8
     return Lf, af, bf
 
-def single_scale_fusion(in1_px, in2_px, W, stretch_pct=1):
+def single_scale_fusion(in1_px, in2_px, W, stretch_pct=0):
     H = len(in1_px) // W
     depth = H * W
     aw = int(round(math.log2(depth)))

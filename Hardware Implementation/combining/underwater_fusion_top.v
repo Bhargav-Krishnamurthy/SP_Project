@@ -24,7 +24,9 @@
 // on the fly from the white-balanced BRAM.
 //
 // NOTE: btn is [1:0] on purpose (the XDC only constrains btn[0] and btn[1]).
-module underwater_fusion_top (
+module underwater_fusion_top #(
+    parameter [1:0] BETA_MODE = 2'b01  // 00: beta=0.5, 01: beta=1.0 (default), 10: beta=1.5, 11: beta=2.0
+)(
     input  wire        clk,
     input  wire [1:0]  btn,
     output wire [15:0] led,
@@ -61,7 +63,8 @@ module underwater_fusion_top (
         .ADDR_WIDTH(16),
         .CLK_HZ(100000000),
         .UART_BAUD(115200),
-        .STRETCH_PCT(1)
+        .STRETCH_PCT(0),
+        .BETA_MODE(BETA_MODE)
     ) engine (
         .clk(clk),
         .rst(rst),
@@ -84,15 +87,14 @@ endmodule
 // Passes:
 //  P1..P3  : Underwater White Balance (red/blue compensation + Gray World),
 //            result written in place into image_mem.
-//  MM_*    : Unsharp pre-pass: global Dmin / Dmax of D = I_wb - blur3x3(I_wb).
 //  SLM_*   : Saliency Lab mean pre-pass: global mean CIE Lab of blurred I1, I2.
 //  WMM_*   : Weight map min/max pre-pass: global min/max of W_L, W_S, W_Sat
-//            for both Input 1 (gamma) and Input 2 (unsharp).
+//            for both Input 1 (gamma) and Input 2 (enhanced unsharp).
 //  FMM_*   : Fused image histogram & percentile/min-max linear stretch bounds.
 //  Streaming stages 0..4:
 //   stage 0: white-balanced image
 //   stage 1: gamma_lut[ white-balanced ] (Input 1)
-//   stage 2: normalized unsharp masking  (Input 2)
+//   stage 2: enhanced unsharp masking    (Input 2: S = clip(I + beta*(I - G*I)))
 //   stage 3: single-scale fusion R = Wbar1 * I1 + Wbar2 * I2 (linearly stretched)
 //   stage 4: normalized weights  {Wbar1, Wbar2, 0}
 // ---------------------------------------------------------------------------
@@ -102,7 +104,8 @@ module underwater_fusion_engine #(
     parameter integer ADDR_WIDTH  = 16,
     parameter integer CLK_HZ      = 100000000,
     parameter integer UART_BAUD   = 115200,
-    parameter integer STRETCH_PCT = 1
+    parameter integer STRETCH_PCT = 0,
+    parameter [1:0]   BETA_MODE   = 2'b01  // 00: 0.5, 01: 1.0 (default), 10: 1.5, 11: 2.0
 )(
     input  wire       clk,
     input  wire       rst,
@@ -121,7 +124,6 @@ module underwater_fusion_engine #(
     localparam [16:0] PCT_HI = (STRETCH_PCT == 0) ? DEPTH : (DEPTH - ((DEPTH * STRETCH_PCT) / 100));
 
     localparam [1:0]
-        CTX_MM      = 2'd0,
         CTX_UNSHARP = 2'd1,
         CTX_FUSION  = 2'd2;
 
@@ -154,19 +156,12 @@ module underwater_fusion_engine #(
         P3_WRITE     = 7'd19,
         FINISHED     = 7'd20,
         // 3x3 inner neighbourhood fetch
-        MM_INIT      = 7'd21,
         NB_INIT      = 7'd22,
         NB_ADDR      = 7'd23,
         NB_REQ       = 7'd24,
         NB_WAIT      = 7'd25,
         NB_USE       = 7'd26,
         NB_DONE      = 7'd27,
-        // pre-pass min/max for unsharp
-        MM_R         = 7'd28,
-        MM_G         = 7'd29,
-        MM_B         = 7'd30,
-        MM_NEXT      = 7'd31,
-        MM_FIN       = 7'd32,
         // streaming header + stage 0/1/2
         STG_BEGIN    = 7'd33,
         H_START      = 7'd34,
@@ -176,10 +171,6 @@ module underwater_fusion_engine #(
         PX_LATCH     = 7'd38,
         G_W1         = 7'd39,
         G_W2         = 7'd40,
-        UN_SUB       = 7'd41,
-        UN_MUL       = 7'd42,
-        UN_GO        = 7'd43,
-        UN_WAIT      = 7'd44,
         UN_FIN       = 7'd45,
         TX_START     = 7'd46,
         TX_WAIT      = 7'd47,
@@ -304,22 +295,6 @@ module underwater_fusion_engine #(
 
     reg [11:0] acc_r, acc_g, acc_b;         // inner blur sums (max 4080)
     reg [7:0]  ctr_r, ctr_g, ctr_b;         // inner centre pixel
-    reg signed [8:0] d_r, d_g, d_b;         // I - blur, -255..255
-    reg signed [8:0] dmin, dmax;
-    reg [8:0]  range_v;                     // dmax - dmin, 0..510
-
-    reg [8:0]  dd_r, dd_g, dd_b;            // D - dmin, 0..510
-    reg [16:0] num_r, num_g, num_b;         // (D - dmin) * 255
-    reg        dv_start;
-    wire [16:0] dvr_q, dvg_q, dvb_q;
-    wire        dvr_done, dvg_done, dvb_done;
-
-    div_seq #(.NW(17), .DW(9)) un_div_r (.clk(clk), .start(dv_start), .num(num_r),
-                                         .den(range_v), .quo(dvr_q), .done(dvr_done));
-    div_seq #(.NW(17), .DW(9)) un_div_g (.clk(clk), .start(dv_start), .num(num_g),
-                                         .den(range_v), .quo(dvg_q), .done(dvg_done));
-    div_seq #(.NW(17), .DW(9)) un_div_b (.clk(clk), .start(dv_start), .num(num_b),
-                                         .den(range_v), .quo(dvb_q), .done(dvb_done));
 
     // Inner neighbour offset / Gaussian weight
     reg signed [1:0] nb_dy, nb_dx;
@@ -366,10 +341,44 @@ module underwater_fusion_engine #(
     wire [ADDR_WIDTH-1:0] uy_m1 = (uy == 0)           ? uy    : uy - 1'b1;
     wire [ADDR_WIDTH-1:0] uy_p1 = (uy == HEIGHT-1)    ? uy    : uy + 1'b1;
 
-    // Unsharp result: S = (I + N) >> 1
-    wire [8:0] s_r_sum = {1'b0, ctr_r} + {1'b0, dvr_q[7:0]};
-    wire [8:0] s_g_sum = {1'b0, ctr_g} + {1'b0, dvg_q[7:0]};
-    wire [8:0] s_b_sum = {1'b0, ctr_b} + {1'b0, dvb_q[7:0]};
+    // Enhanced Unsharp Masking: S = clip(I + beta*(I - G*I), 0, 255)
+    wire signed [9:0] d_r_s = $signed({1'b0, ctr_r}) - $signed({1'b0, acc_r[11:4]});
+    wire signed [9:0] d_g_s = $signed({1'b0, ctr_g}) - $signed({1'b0, acc_g[11:4]});
+    wire signed [9:0] d_b_s = $signed({1'b0, ctr_b}) - $signed({1'b0, acc_b[11:4]});
+
+    reg signed [10:0] d_term_r, d_term_g, d_term_b;
+    always @* begin
+        case (BETA_MODE)
+            2'b00: begin // beta = 0.5
+                d_term_r = {{2{d_r_s[9]}}, d_r_s[9:1]};
+                d_term_g = {{2{d_g_s[9]}}, d_g_s[9:1]};
+                d_term_b = {{2{d_b_s[9]}}, d_b_s[9:1]};
+            end
+            2'b10: begin // beta = 1.5
+                d_term_r = $signed({{1{d_r_s[9]}}, d_r_s}) + $signed({{2{d_r_s[9]}}, d_r_s[9:1]});
+                d_term_g = $signed({{1{d_g_s[9]}}, d_g_s}) + $signed({{2{d_g_s[9]}}, d_g_s[9:1]});
+                d_term_b = $signed({{1{d_b_s[9]}}, d_b_s}) + $signed({{2{d_b_s[9]}}, d_b_s[9:1]});
+            end
+            2'b11: begin // beta = 2.0
+                d_term_r = $signed({d_r_s, 1'b0});
+                d_term_g = $signed({d_g_s, 1'b0});
+                d_term_b = $signed({d_b_s, 1'b0});
+            end
+            default: begin // beta = 1.0 (default)
+                d_term_r = {{1{d_r_s[9]}}, d_r_s};
+                d_term_g = {{1{d_g_s[9]}}, d_g_s};
+                d_term_b = {{1{d_b_s[9]}}, d_b_s};
+            end
+        endcase
+    end
+
+    wire signed [11:0] val_r = $signed({3'b000, ctr_r}) + $signed({{1{d_term_r[10]}}, d_term_r});
+    wire signed [11:0] val_g = $signed({3'b000, ctr_g}) + $signed({{1{d_term_g[10]}}, d_term_g});
+    wire signed [11:0] val_b = $signed({3'b000, ctr_b}) + $signed({{1{d_term_b[10]}}, d_term_b});
+
+    wire [7:0] sharp_r = val_r[11] ? 8'd0 : (val_r[10:8] != 3'b000 ? 8'd255 : val_r[7:0]);
+    wire [7:0] sharp_g = val_g[11] ? 8'd0 : (val_g[10:8] != 3'b000 ? 8'd255 : val_g[7:0]);
+    wire [7:0] sharp_b = val_b[11] ? 8'd0 : (val_b[10:8] != 3'b000 ? 8'd255 : val_b[7:0]);
 
     // ---------------- Weight & Single-Scale Fusion datapath ---------------
     reg [23:0] i1_nb, i2_nb;
@@ -606,11 +615,6 @@ module underwater_fusion_engine #(
             m <= 0; om_w_r <= 0;
             acc_r <= 0; acc_g <= 0; acc_b <= 0;
             ctr_r <= 0; ctr_g <= 0; ctr_b <= 0;
-            d_r <= 0; d_g <= 0; d_b <= 0;
-            dmin <= 0; dmax <= 0; range_v <= 0;
-            dd_r <= 0; dd_g <= 0; dd_b <= 0;
-            num_r <= 0; num_g <= 0; num_b <= 0;
-            dv_start <= 0;
             i1_nb <= 0; i2_nb <= 0; i1_ctr <= 0; i2_ctr <= 0;
             blur1_r <= 0; blur1_g <= 0; blur1_b <= 0;
             blur2_r <= 0; blur2_g <= 0; blur2_b <= 0;
@@ -668,7 +672,6 @@ module underwater_fusion_engine #(
             tx_start     <= 0;
             c_start      <= 0;
             g_start      <= 0;
-            dv_start     <= 0;
             lab_start    <= 0;
             sqrt_start   <= 0;
             wn_dv_start  <= 0;
@@ -688,7 +691,7 @@ module underwater_fusion_engine #(
                         sum_rc <= 0; sum_gc <= 0; sum_bc <= 0;
                         if (wb_ready) begin
                             phase_out <= 3'd4;
-                            state     <= MM_INIT;
+                            state     <= SLM_INIT;
                         end else begin
                             phase_out <= 3'd1;
                             state     <= P1_REQ;
@@ -796,24 +799,11 @@ module underwater_fusion_engine #(
                     if (pixel_index == DEPTH-1) begin
                         wb_ready  <= 1'b1;
                         phase_out <= 3'd4;
-                        state     <= MM_INIT;
+                        state     <= SLM_INIT;
                     end else begin
                         pixel_index <= pixel_index + 1'b1;
                         state <= P3_REQ;
                     end
-                end
-
-                // ---------- PASS 4: unsharp pre-pass (global Dmin/Dmax) ---
-                MM_INIT: begin
-                    dmin        <= 9'sd255;
-                    dmax        <= -9'sd255;
-                    pixel_index <= 0;
-                    x_cnt       <= 0;
-                    y_cnt       <= 0;
-                    ux          <= 0;
-                    uy          <= 0;
-                    nb_ctx      <= CTX_MM;
-                    state       <= NB_INIT;
                 end
 
                 // ---------- 3x3 inner neighbourhood fetch around (ux, uy) -
@@ -851,52 +841,10 @@ module underwater_fusion_engine #(
                     end
                 end
                 NB_DONE: begin
-                    d_r <= {1'b0, ctr_r} - {1'b0, acc_r[11:4]};
-                    d_g <= {1'b0, ctr_g} - {1'b0, acc_g[11:4]};
-                    d_b <= {1'b0, ctr_b} - {1'b0, acc_b[11:4]};
-                    state <= (nb_ctx == CTX_MM) ? MM_R : UN_SUB;
+                    state <= UN_FIN;
                 end
 
-                MM_R: begin
-                    if (d_r < dmin) dmin <= d_r;
-                    if (d_r > dmax) dmax <= d_r;
-                    state <= MM_G;
-                end
-                MM_G: begin
-                    if (d_g < dmin) dmin <= d_g;
-                    if (d_g > dmax) dmax <= d_g;
-                    state <= MM_B;
-                end
-                MM_B: begin
-                    if (d_b < dmin) dmin <= d_b;
-                    if (d_b > dmax) dmax <= d_b;
-                    state <= MM_NEXT;
-                end
-                MM_NEXT: begin
-                    if (pixel_index == DEPTH-1)
-                        state <= MM_FIN;
-                    else begin
-                        pixel_index <= pixel_index + 1'b1;
-                        if (x_cnt == WIDTH-1) begin
-                            x_cnt <= 0;
-                            ux    <= 0;
-                            y_cnt <= y_cnt + 1'b1;
-                            uy    <= y_cnt + 1'b1;
-                        end else begin
-                            x_cnt <= x_cnt + 1'b1;
-                            ux    <= x_cnt + 1'b1;
-                            uy    <= y_cnt;
-                        end
-                        state <= NB_INIT;
-                    end
-                end
-                MM_FIN: begin
-                    range_v   <= dmax - dmin;
-                    phase_out <= 3'd5;
-                    state     <= SLM_INIT;
-                end
-
-                // ---------- PASS 5: Saliency Lab global mean --------------
+                // ---------- PASS 4: Saliency Lab global mean --------------
                 SLM_INIT: begin
                     sum_L1      <= 32'd0; sum_L2 <= 32'd0;
                     sum_a1      <= 32'sd0; sum_b1 <= 32'sd0;
@@ -1307,38 +1255,15 @@ module underwater_fusion_engine #(
                 end
 
                 // inner unsharp masking computation (shared by stage 2 and CTX_FUSION)
-                UN_SUB: begin
-                    dd_r <= d_r - dmin;
-                    dd_g <= d_g - dmin;
-                    dd_b <= d_b - dmin;
-                    state <= UN_MUL;
-                end
-                UN_MUL: begin
-                    num_r <= {dd_r, 8'b0} - dd_r;
-                    num_g <= {dd_g, 8'b0} - dd_g;
-                    num_b <= {dd_b, 8'b0} - dd_b;
-                    state <= (range_v == 9'd0) ? UN_FIN : UN_GO;
-                end
-                UN_GO: begin
-                    dv_start <= 1'b1;
-                    state    <= UN_WAIT;
-                end
-                UN_WAIT: if (dvr_done && dvg_done && dvb_done) state <= UN_FIN;
                 UN_FIN: begin
                     if (nb_ctx == CTX_FUSION) begin
                         i1_nb <= {gam_r, gam_g, gam_b};
-                        if (range_v == 9'd0)
-                            i2_nb <= {ctr_r, ctr_g, ctr_b};
-                        else
-                            i2_nb <= {s_r_sum[8:1], s_g_sum[8:1], s_b_sum[8:1]};
+                        i2_nb <= {sharp_r, sharp_g, sharp_b};
                         state <= OUTER_ACC1;
                     end else begin
-                        if (range_v == 9'd0)
-                            out_pixel <= {ctr_r, ctr_g, ctr_b};
-                        else
-                            out_pixel <= {s_r_sum[8:1], s_g_sum[8:1], s_b_sum[8:1]};
-                        tx_seq <= 2'd0;
-                        state  <= TX_START;
+                        out_pixel <= {sharp_r, sharp_g, sharp_b};
+                        tx_seq    <= 2'd0;
+                        state     <= TX_START;
                     end
                 end
 
