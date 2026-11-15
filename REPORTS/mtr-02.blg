@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2023/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: mtr-02.aux
+The style file: plain.bst
+Database file #1: egbib.bib
+Warning--I didn't find a database entry for "achanta2009frequency"
+You've used 10 entries,
+            2118 wiz_defined-function locations,
+            560 strings with 5707 characters,
+and the built_in function-call counts, 4072 in all, are:
+= -- 408
+> -- 200
+< -- 2
++ -- 81
+- -- 68
+* -- 321
+:= -- 663
+add.period$ -- 30
+call.type$ -- 10
+change.case$ -- 64
+chr.to.int$ -- 0
+cite$ -- 10
+duplicate$ -- 134
+empty$ -- 303
+format.name$ -- 68
+if$ -- 837
+int.to.chr$ -- 0
+int.to.str$ -- 10
+missing$ -- 10
+newline$ -- 53
+num.names$ -- 20
+pop$ -- 54
+preamble$ -- 1
+purify$ -- 54
+quote$ -- 0
+skip$ -- 98
+stack$ -- 0
+substring$ -- 335
+swap$ -- 30
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 40
+warning$ -- 0
+while$ -- 42
+width$ -- 12
+write$ -- 112
+(There was 1 warning)
