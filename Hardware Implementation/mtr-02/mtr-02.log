@@ -1,0 +1,1547 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.8.3)  15 NOV 2026 20:56
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**mtr-02.tex
+(./mtr-02.tex
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
+(/usr/local/texlive/2025/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2024/06/29 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2025/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2024/06/29 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count196
+\c@section=\count197
+\c@subsection=\count198
+\c@subsubsection=\count199
+\c@paragraph=\count266
+\c@subparagraph=\count267
+\c@figure=\count268
+\c@table=\count269
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen141
+)
+
+! LaTeX Error: File `cvpr.sty' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: 
+! Interruption.
+<to be read again> 
+                   }
+l.5 \usepackage
+               {graphicx}^^M
+? 
+(/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen142
+\Gin@req@width=\dimen143
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2024/11/05 v2.17t AMS math features
+\@mathmargin=\skip51
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2025/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks18
+\ex@=\dimen144
+))
+(/usr/local/texlive/2025/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen145
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count270
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count271
+\leftroot@=\count272
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count273
+\DOTSCASE@=\count274
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box52
+\strutbox@=\box53
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen146
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count275
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count276
+\dotsspace@=\muskip17
+\c@parentequation=\count277
+\dspbrk@lvl=\count278
+\tag@help=\toks19
+\row@=\count279
+\column@=\count280
+\maxfields@=\count281
+\andhelp@=\toks20
+\eqnshift@=\dimen147
+\alignsep@=\dimen148
+\tagshift@=\dimen149
+\tagwidth@=\dimen150
+\totwidth@=\dimen151
+\lineht@=\dimen152
+\@envbody=\toks21
+\multlinegap=\skip52
+\multlinetaggap=\skip53
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2953.
+LaTeX Info: Redefining \] on input line 2954.
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/local/texlive/2025/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen153
+\lightrulewidth=\dimen154
+\cmidrulewidth=\dimen155
+\belowrulesep=\dimen156
+\belowbottomsep=\dimen157
+\aboverulesep=\dimen158
+\abovetopsep=\dimen159
+\cmidrulesep=\dimen160
+\cmidrulekern=\dimen161
+\defaultaddspace=\dimen162
+\@cmidla=\count282
+\@cmidlb=\count283
+\@aboverulesep=\dimen163
+\@belowrulesep=\dimen164
+\@thisruleclass=\count284
+\@lastruleclass=\count285
+\@thisrulewidth=\dimen165
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/placeins/placeins.sty
+Package: placeins 2005/04/18  v 2.2
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2024-11-05 v7.01l Hypertext links for LaTeX
+
+(/usr/local/texlive/2025/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+)
+(/usr/local/texlive/2025/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(/usr/local/texlive/2025/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+
+(/usr/local/texlive/2025/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+(/usr/local/texlive/2025/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/local/texlive/2025/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+))
+(/usr/local/texlive/2025/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2023-11-26 v2.56 Cross-referencing by name of section
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(/usr/local/texlive/2025/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
+ty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count286
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count287
+)
+(/usr/local/texlive/2025/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
+)
+\@linkdim=\dimen166
+\Hy@linkcounter=\count288
+\Hy@pagecounter=\count289
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2024-11-05 v7.01l Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(/usr/local/texlive/2025/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count290
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2024-11-05 v7.01l Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Option `breaklinks' set `true' on input line 4040.
+Package hyperref Info: Option `colorlinks' set `true' on input line 4040.
+Package hyperref Info: Hyper figures OFF on input line 4157.
+Package hyperref Info: Link nesting OFF on input line 4162.
+Package hyperref Info: Hyper index ON on input line 4165.
+Package hyperref Info: Plain pages OFF on input line 4172.
+Package hyperref Info: Backreferencing ON on input line 4175.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4424.
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/backref.sty
+Package: backref 2023-11-26 v1.44 Bibliographical back referencing
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/base/atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
+kage
+with kernel methods
+)
+(/usr/local/texlive/2025/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+(/usr/local/texlive/2025/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+85.
+))
+\c@Hy@tempcnt=\count291
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip18
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4763.
+\XeTeXLinkMargin=\dimen167
+
+(/usr/local/texlive/2025/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+)
+\Fld@menulength=\count292
+\Field@Width=\dimen168
+\Fld@charsize=\dimen169
+Package hyperref Info: Hyper figures OFF on input line 6042.
+Package hyperref Info: Link nesting OFF on input line 6047.
+Package hyperref Info: Hyper index ON on input line 6050.
+Package hyperref Info: backreferencing ON on input line 6055.
+Package hyperref Info: Link coloring ON on input line 6060.
+Package hyperref Info: Link coloring with OCG OFF on input line 6067.
+Package hyperref Info: PDF/A mode OFF on input line 6072.
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+\Hy@abspage=\count293
+\c@Item=\count294
+\c@Hfootnote=\count295
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2024-11-05 v7.01l Hyperref driver for pdfTeX
+\Fld@listcount=\count296
+\c@bookmark@seq@number=\count297
+\Hy@SectionHShift=\skip54
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/cleveref/cleveref.sty
+Package: cleveref 2018/03/27 v0.21.4 Intelligent cross-referencing
+Package cleveref Info: `hyperref' support loaded on input line 2370.
+LaTeX Info: Redefining \cref on input line 2370.
+LaTeX Info: Redefining \Cref on input line 2370.
+LaTeX Info: Redefining \crefrange on input line 2370.
+LaTeX Info: Redefining \Crefrange on input line 2370.
+LaTeX Info: Redefining \cpageref on input line 2370.
+LaTeX Info: Redefining \Cpageref on input line 2370.
+LaTeX Info: Redefining \cpagerefrange on input line 2370.
+LaTeX Info: Redefining \Cpagerefrange on input line 2370.
+LaTeX Info: Redefining \labelcref on input line 2370.
+LaTeX Info: Redefining \labelcpageref on input line 2370.
+Package cleveref Info: always capitalise cross-reference names on input line 78
+30.
+Package cleveref Info: always capitalise cross-reference names on input line 78
+52.
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count298
+\l__pdf_internal_box=\box54
+)
+No file mtr-02.aux.
+\openout1 = `mtr-02.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+(/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count299
+\scratchdimen=\dimen170
+\scratchbox=\box55
+\nofMPsegments=\count300
+\nofMParguments=\count301
+\everyMPshowfont=\toks23
+\MPscratchCnt=\count302
+\MPscratchDim=\dimen171
+\MPnumerator=\count303
+\makeMPintoPDFobject=\count304
+\everyMPtoPDFconversion=\toks24
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/grfext/grfext.sty
+Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 504.
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+Package hyperref Info: Link coloring ON on input line 25.
+\@outlinefile=\write3
+\openout3 = `mtr-02.out'.
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 38.
+
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 38.
+
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+! Missing number, treated as zero.
+<to be read again> 
+                   I
+l.38 
+     
+? 
+! Missing = inserted for \ifdim.
+<to be read again> 
+                   s
+l.38 
+     
+? R
+OK, entering \nonstopmode...
+! Missing number, treated as zero.
+<to be read again> 
+                   s
+l.38 
+     
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   s
+l.38 
+     
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+! Missing number, treated as zero.
+<to be read again> 
+                   \unskip 
+l.38 
+     
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \unskip 
+l.38 
+     
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+! Missing number, treated as zero.
+<to be read again> 
+                   I
+l.38 
+     
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+
+Overfull \hbox (11.38129pt too wide) in paragraph at lines 38--38
+ [][] 
+ []
+
+
+LaTeX Warning: Citation `ancuti2018color' on page 1 undefined on input line 41.
+
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+
+LaTeX Warning: Citation `ancuti2018color' on page 1 undefined on input line 61.
+
+
+
+LaTeX Warning: Citation `peng2017underwater' on page 1 undefined on input line 
+61.
+
+
+LaTeX Warning: Citation `galdran2015automatic' on page 1 undefined on input lin
+e 61.
+
+
+LaTeX Warning: Citation `ancuti2018color' on page 1 undefined on input line 67.
+
+
+
+LaTeX Warning: Citation `li2020underwater' on page 1 undefined on input line 74
+.
+
+
+LaTeX Warning: Citation `yang2015uciqe' on page 1 undefined on input line 74.
+
+
+LaTeX Warning: Citation `panetta2016uiqm' on page 1 undefined on input line 75.
+
+
+
+
+[1{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+
+]
+
+LaTeX Warning: Reference `eq:ifm' on page 1 undefined on input line 103.
+
+
+
+
+LaTeX Warning: Citation `galdran2015automatic' on page 2 undefined on input lin
+e 105.
+
+
+LaTeX Warning: Citation `he2009dark' on page 2 undefined on input line 108.
+
+
+LaTeX Warning: Citation `peng2017underwater' on page 2 undefined on input line 
+120.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 138--142
+[]\OT1/cmr/m/n/10 While these phys-i-cal model-based meth-ods
+ []
+
+
+LaTeX Warning: Citation `ancuti2012enhancing' on page 2 undefined on input line
+ 146.
+
+
+LaTeX Warning: Citation `ancuti2018color' on page 2 undefined on input line 150
+.
+
+
+Underfull \vbox (badness 5756) has occurred while \output is active []
+
+
+
+[2{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
+}]
+
+LaTeX Warning: Citation `li2020underwater' on page 3 undefined on input line 15
+4.
+
+
+LaTeX Warning: Citation `ancuti2018color' on page 3 undefined on input line 158
+.
+
+
+Underfull \hbox (badness 1708) in paragraph at lines 162--162
+[]\OT1/cmr/bx/n/14.4 Algorithm: Color Bal-ance
+ []
+
+
+LaTeX Warning: Citation `ancuti2018color' on page 3 undefined on input line 165
+.
+
+
+
+
+
+[3]
+Overfull \hbox (17.64745pt too wide) detected at line 248
+[][][][]\OML/cmm/m/it/10 W[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 
+) = []
+ []
+
+
+LaTeX Warning: Citation `burt1983laplacian' on page 4 undefined on input line 2
+62.
+
+
+LaTeX Warning: Citation `mertens2009exposure' on page 4 undefined on input line
+ 262.
+
+
+
+
+LaTeX Warning: Reference `eq:redcomp' on page 1 undefined on input line 302.
+
+
+LaTeX Warning: Reference `eq:grayworld' on page 1 undefined on input line 305.
+
+
+Underfull \hbox (badness 5403) in paragraph at lines 301--307
+[]\OT1/cmr/bx/n/10 Pass 2---Red Com-pen-sa-tion and Gray
+ []
+
+
+
+[4]
+
+LaTeX Warning: Reference `eq:wl' on page 1 undefined on input line 318.
+
+
+LaTeX Warning: Reference `eq:wsat' on page 1 undefined on input line 319.
+
+
+LaTeX Warning: Reference `eq:fusion' on page 1 undefined on input line 324.
+
+
+LaTeX Warning: Citation `li2020underwater' on page 5 undefined on input line 33
+9.
+
+
+LaTeX Warning: Citation `yang2015uciqe' on page 5 undefined on input line 342.
+
+
+LaTeX Warning: Citation `panetta2016uiqm' on page 5 undefined on input line 342
+.
+
+
+LaTeX Warning: Citation `ancuti2018color' on page 5 undefined on input line 348
+.
+
+
+! LaTeX Error: Environment subfigure undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.352   \begin{subfigure}
+                         {0.49\linewidth}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   }
+l.352   \begin{subfigure}{0.49\linewidth}
+                                         
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   }
+l.352   \begin{subfigure}{0.49\linewidth}
+                                         
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+
+LaTeX Warning: File `underwater_raw.jpg' not found on input line 354.
+
+
+! Package pdftex.def Error: File `underwater_raw.jpg' not found: using draft se
+tting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.354 ...ics[width=\linewidth]{underwater_raw.jpg}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: \begin{figure} on input line 350 ended by \end{subfigure}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.357   \end{subfigure}
+                       
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Environment subfigure undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.359   \begin{subfigure}
+                         {0.49\linewidth}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   }
+l.359   \begin{subfigure}{0.49\linewidth}
+                                         
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   }
+l.359   \begin{subfigure}{0.49\linewidth}
+                                         
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+
+LaTeX Warning: File `enhanced_raw_output.jpg' not found on input line 361.
+
+
+! Package pdftex.def Error: File `enhanced_raw_output.jpg' not found: using dra
+ft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.361 ...idth=\linewidth]{enhanced_raw_output.jpg}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: \begin{figure} on input line 350 ended by \end{subfigure}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.364   \end{subfigure}
+                       
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+LaTeX Warning: Float too large for page by 9.41623pt on input line 367.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: Citation `ancuti2018color' on page 5 undefined on input line 375
+.
+
+
+Underfull \hbox (badness 1803) in paragraph at lines 372--384
+\OT1/cmr/m/n/10 weight-driven fu-sion en-tirely with-out a general-
+ []
+
+
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\\' on input line 385.
+
+
+Overfull \hbox (6.35591pt too wide) detected at line 397
+[]
+ []
+
+
+
+[5]
+
+
+Underfull \hbox (badness 1584) in paragraph at lines 489--490
+\OT1/cmr/bx/n/10 dows, line buffers, fixed-point arith-metic,
+ []
+
+
+! LaTeX Error: Environment subfigure undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.497   \begin{subfigure}
+                         {0.87\linewidth}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   }
+l.497   \begin{subfigure}{0.87\linewidth}
+                                         
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   }
+l.497   \begin{subfigure}{0.87\linewidth}
+                                         
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+
+LaTeX Warning: File `original_and_enhanced_horizontal.png' not found on input l
+ine 499.
+
+
+! Package pdftex.def Error: File `original_and_enhanced_horizontal.png' not fou
+nd: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.499 ...th]{original_and_enhanced_horizontal.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: \begin{figure} on input line 495 ended by \end{subfigure}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.502   \end{subfigure}
+                       
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 519--519
+[]\OT1/cmr/bx/n/14.4 Implementation Progress:
+ []
+
+
+
+[6]
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 524.
+
+Underfull \hbox (badness 5939) in paragraph at lines 524--525
+[]\OT1/cmr/bx/n/10 Complete End-to-End Python Model
+ []
+
+
+Underfull \hbox (badness 2005) in paragraph at lines 526--527
+[]\OT1/cmr/bx/n/10 Verilog Gamma Cor-rec-tion Sub-sys-tem
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 527--528
+[]\OT1/cmr/bx/n/10 Verilog Stream-ing Nor-mal-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 527--528
+\OT1/cmr/bx/n/10 ized Un-sharp Mask-ing Core
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 527--528
+\OT1/cmr/bx/n/10 (\OT1/cmtt/m/n/10 Normalized[]Unsharp[]Masking\OT1/cmr/bx/n/10
+ ): \OT1/cmr/m/n/10 A dual
+ []
+
+
+LaTeX Warning: Reference `eq:redcomp' on page 1 undefined on input line 536.
+
+
+LaTeX Warning: Reference `eq:grayworld' on page 1 undefined on input line 536.
+
+
+
+
+LaTeX Warning: Reference `eq:wl' on page 1 undefined on input line 556.
+
+
+LaTeX Warning: Citation `achanta2009frequency' on page 7 undefined on input lin
+e 557.
+
+
+Underfull \hbox (badness 2221) in paragraph at lines 557--558
+[]\OT1/cmr/bx/n/10 Saliency Weight ($\OML/cmm/m/it/10 W[]$\OT1/cmr/bx/n/10 ): \
+OT1/cmr/m/n/10 Frequency-tuned
+ []
+
+
+LaTeX Warning: Reference `eq:wsat' on page 1 undefined on input line 561.
+
+
+! LaTeX Error: Environment subfigure undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.570   \begin{subfigure}
+                         {0.48\linewidth}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   }
+l.570   \begin{subfigure}{0.48\linewidth}
+                                         
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   }
+l.570   \begin{subfigure}{0.48\linewidth}
+                                         
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+
+LaTeX Warning: File `input.png' not found on input line 572.
+
+
+! Package pdftex.def Error: File `input.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.572 ...ludegraphics[width=\linewidth]{input.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: \begin{figure} on input line 568 ended by \end{subfigure}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.575   \end{subfigure}
+                       
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Environment subfigure undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.577   \begin{subfigure}
+                         {0.48\linewidth}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   }
+l.577   \begin{subfigure}{0.48\linewidth}
+                                         
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   }
+l.577   \begin{subfigure}{0.48\linewidth}
+                                         
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+
+LaTeX Warning: File `white_balance_2.png' not found on input line 579.
+
+
+! Package pdftex.def Error: File `white_balance_2.png' not found: using draft s
+etting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.579 ...cs[width=\linewidth]{white_balance_2.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: \begin{figure} on input line 568 ended by \end{subfigure}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.582   \end{subfigure}
+                       
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Environment subfigure undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.584   \begin{subfigure}
+                         {0.48\linewidth}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   }
+l.584   \begin{subfigure}{0.48\linewidth}
+                                         
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   }
+l.584   \begin{subfigure}{0.48\linewidth}
+                                         
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+
+LaTeX Warning: File `white_balance_out.png' not found on input line 586.
+
+
+! Package pdftex.def Error: File `white_balance_out.png' not found: using draft
+ setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.586 ...[width=\linewidth]{white_balance_out.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: \begin{figure} on input line 568 ended by \end{subfigure}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.589   \end{subfigure}
+                       
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Environment subfigure undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.591   \begin{subfigure}
+                         {0.48\linewidth}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   }
+l.591   \begin{subfigure}{0.48\linewidth}
+                                         
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   }
+l.591   \begin{subfigure}{0.48\linewidth}
+                                         
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+
+LaTeX Warning: File `gamma_out.png' not found on input line 593.
+
+
+! Package pdftex.def Error: File `gamma_out.png' not found: using draft setting
+.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.593 ...graphics[width=\linewidth]{gamma_out.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: \begin{figure} on input line 568 ended by \end{subfigure}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.596   \end{subfigure}
+                       
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+LaTeX Warning: Float too large for page by 538.44357pt on input line 599.
+
+
+LaTeX Warning: File `python_fused_out.png' not found on input line 603.
+
+
+! Package pdftex.def Error: File `python_fused_out.png' not found: using draft 
+setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.603 ...idth=0.5\linewidth]{python_fused_out.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 612--613
+\OT1/cmr/m/n/10 The white bal-ance ac-cel-er-a-tor
+ []
+
+
+Underfull \hbox (badness 3039) in paragraph at lines 612--613
+\OT1/cmr/m/n/10 (\OT1/cmtt/m/n/10 underwater[]fpga[]top.v\OT1/cmr/m/n/10 ) ex-e
+-cutes au-tonomously
+ []
+
+
+
+[7]
+Underfull \hbox (badness 3815) in paragraph at lines 618--619
+[]\OT1/cmr/bx/n/10 Pass 1 (\OT1/cmtt/m/n/10 P1[]REQ $\OMS/cmsy/m/n/10 !$ \OT1/c
+mtt/m/n/10 P1[]CALC\OT1/cmr/bx/n/10 ): \OT1/cmr/m/n/10 Scans all
+ []
+
+
+Underfull \hbox (badness 1019) in paragraph at lines 618--619
+[] \OT1/cmr/m/n/10 = 65536$ is ex-e-cuted via a 16-bit
+ []
+
+
+Overfull \hbox (0.7303pt too wide) detected at line 629
+[][][][]\OML/cmm/m/it/10 y \OT1/cmr/m/n/10 = []  []
+ []
+
+
+
+
+Underfull \hbox (badness 3954) in paragraph at lines 632--633
+[]\OT1/cmr/bx/n/10 Sequential Di-vider (\OT1/cmtt/m/n/10 div[]seq\OT1/cmr/bx/n/
+10 ): \OT1/cmr/m/n/10 A non-
+ []
+
+
+Underfull \hbox (badness 1275) in paragraph at lines 635--636
+[]\OT1/cmr/bx/n/10 4. UART Stream-ing Con-troller: \OT1/cmr/m/n/10 Upon
+ []
+
+
+Underfull \hbox (badness 1163) in paragraph at lines 635--636
+\OT1/cmr/m/n/10 ($\OML/cmm/m/it/10 R; G; B$\OT1/cmr/m/n/10 ) per pixel are stre
+amed over \OT1/cmtt/m/n/10 UART[]txd
+ []
+
+
+Underfull \hbox (badness 6016) in paragraph at lines 637--637
+[]\OT1/cmr/bx/n/12 Gamma Cor-rec-tion Sub-sys-tem
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 643--643
+[]\OT1/cmr/bx/n/12 Normalized Un-sharp Mask-ing
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 646--647
+\OT1/cmr/m/n/10 The un-sharp mask-ing en-gine
+ []
+
+
+Underfull \hbox (badness 5288) in paragraph at lines 646--647
+\OT1/cmr/m/n/10 (\OT1/cmtt/m/n/10 Normalized[]Unsharp[]Masking\OT1/cmr/m/n/10 )
+ ap-plies real-time
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 648--649
+[]\OT1/cmr/bx/n/10 2D Slid-ing Win-dow Gen-er-a-tor
+ []
+
+
+Underfull \hbox (badness 1102) in paragraph at lines 648--649
+\OT1/cmr/bx/n/10 (\OT1/cmtt/m/n/10 sliding[]window.v\OT1/cmr/bx/n/10 ): \OT1/cm
+r/m/n/10 Uses two syn-chronous
+ []
+
+
+
+[8]
+Underfull \hbox (badness 1337) in paragraph at lines 649--650
+\OT1/cmr/bx/n/10 ing (\OT1/cmtt/m/n/10 normalized[]unsharp[]masking.v\OT1/cmr/b
+x/n/10 ): \OT1/cmr/m/n/10 The
+ []
+
+
+Underfull \hbox (badness 1314) in paragraph at lines 657--659
+\OT1/cmr/m/n/10 The sharp-ened pixel is ob-tained via $\OML/cmm/m/it/10 I[] \OT
+1/cmr/m/n/10 =
+ []
+
+
+Underfull \hbox (badness 1147) in paragraph at lines 667--668
+[]\OT1/cmr/m/n/10 Implementing on-chip weight eval-u-a-tion and
+ []
+
+
+LaTeX Warning: Citation `yang2015uciqe' on page 9 undefined on input line 668.
+
+
+LaTeX Warning: Citation `panetta2016uiqm' on page 9 undefined on input line 668
+.
+
+
+LaTeX Warning: Citation `li2020underwater' on page 9 undefined on input line 66
+8.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\OT1/cmr/bx/n/14.4 Unified Sys-tem In-te-gra-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+\OT1/cmr/bx/n/14.4 tion, RTL Op-ti-miza-tion,
+ []
+
+
+LaTeX Warning: Citation `ancuti2018color' on page 9 undefined on input line 680
+.
+
+
+
+
+Underfull \hbox (badness 1097) in paragraph at lines 688--689
+\OT1/cmr/m/n/10 tially, ac-cu-mu-lat-ing 32-bit per-channel sums
+ []
+
+
+LaTeX Warning: Reference `eq:comp_hw_cont' on page 1 undefined on input line 68
+9.
+
+
+
+[9]
+Underfull \hbox (badness 1242) in paragraph at lines 696--697
+[]\OT1/cmr/bx/n/10 Pass 5 (\OT1/cmtt/m/n/10 P5[]REQ $\OMS/cmsy/m/n/10 !$ \OT1/c
+mtt/m/n/10 P5[]WRITE\OT1/cmr/bx/n/10 ): Pipelined
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 698--699
+\OT1/cmr/m/n/10 early nor-mal-izes each chan-nel from
+ []
+
+
+Underfull \hbox (badness 1448) in paragraph at lines 705--706
+[]\OT1/cmr/m/it/10 Quality Weight Eval-u-a-tion & Blend-ing:
+ []
+
+
+
+
+Underfull \hbox (badness 3838) in paragraph at lines 713--713
+[]\OT1/cmr/bx/n/12 Critical Hard-ware Re-fine-ments
+ []
+
+
+LaTeX Warning: Reference `eq:sharpening' on page 1 undefined on input line 719.
+
+
+
+Overfull \hbox (19.49556pt too wide) detected at line 727
+[][][][]\OML/cmm/m/it/10 S\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 ) 
+= []  []
+ []
+
+
+
+[10]
+Underfull \hbox (badness 3449) in paragraph at lines 740--740
+[]\OT1/cmr/bx/n/12 Automated Multi-Stage UART
+ []
+
+
+Underfull \hbox (badness 2103) in paragraph at lines 747--748
+[]\OT1/cmtt/m/n/10 0xAA, 0x55, 0x01\OT1/cmr/m/n/10 : White Bal-anced Im-age
+ []
+
+
+
+
+Underfull \hbox (badness 1331) in paragraph at lines 752--753
+\OT1/cmr/m/n/10 ple-tion / idle, \OT1/cmtt/m/n/10 LED[7] \OT1/cmr/m/n/10 flags 
+ac-tive UART byte
+ []
+
+
+Underfull \hbox (badness 1565) in paragraph at lines 752--753
+\OT1/cmr/m/n/10 cess-ing passes. A Python host cap-ture script
+ []
+
+
+Underfull \hbox (badness 1122) in paragraph at lines 752--753
+\OT1/cmr/m/n/10 (\OT1/cmtt/m/n/10 capture[]fusion.py\OT1/cmr/m/n/10 ) mon-i-tor
+s the vir-tual COM
+ []
+
+
+Overfull \hbox (163.69882pt too wide) in paragraph at lines 764--776
+ [][] 
+ []
+
+
+LaTeX Warning: Reference `tab:golden_verification' on page 1 undefined on input
+ line 778.
+
+
+Underfull \hbox (badness 7273) in paragraph at lines 780--780
+[]\OT1/cmr/bx/n/12 Quantitative Com-par-i-son with
+ []
+
+
+
+[11]
+Underfull \hbox (badness 5985) in paragraph at lines 789--789
+[]\OT1/cmr/bx/n/12 FPGA Fea-si-bil-ity Anal-y-sis of
+ []
+
+
+LaTeX Warning: Citation `ancuti2018color' on page 12 undefined on input line 79
+2.
+
+
+Underfull \hbox (badness 2762) in paragraph at lines 797--799
+\OT1/cmr/bx/n/10 ware: \OT1/cmr/m/n/10 The AMD Spartan-7 \OT1/cmtt/m/n/10 xc7s5
+0csga324-1
+ []
+
+
+
+
+Overfull \hbox (139.54321pt too wide) in paragraph at lines 809--825
+ [][] 
+ []
+
+
+LaTeX Warning: Reference `tab:multiscale_memory' on page 1 undefined on input l
+ine 828.
+
+
+Underfull \hbox (badness 4353) in paragraph at lines 832--832
+[]\OT1/cmr/bx/n/12 Hardware Re-source Uti-liza-tion
+ []
+
+
+Underfull \hbox (badness 1701) in paragraph at lines 835--836
+\OT1/cmr/m/n/10 The com-plete top-level sys-tem was syn-the-sized,
+ []
+
+
+Underfull \hbox (badness 1189) in paragraph at lines 835--836
+\OT1/cmr/m/n/10 placed, and routed us-ing AMD Vi-vado for the
+ []
+
+
+Overfull \hbox (85.97307pt too wide) in paragraph at lines 842--853
+ [][] 
+ []
+
+
+LaTeX Warning: Reference `tab:fpga_utilization' on page 1 undefined on input li
+ne 855.
+
+
+
+[12]
+Underfull \hbox (badness 2012) in paragraph at lines 863--864
+[]\OT1/cmr/m/n/10 Pass 4 (Min-Max Scan-ner): $65\OML/cmm/m/it/10 ; \OT1/cmr/m/n
+/10 536$ cy-cles
+ []
+
+
+Underfull \hbox (badness 1210) in paragraph at lines 866--867
+\OT1/cmr/m/n/10 cess-ing through-put of \OT1/cmr/bx/n/10 152.6 frames per sec-
+ []
+
+
+
+
+
+[13]
+
+
+
+[14]
+
+
+
+[15]
+No file mtr-02.bbl.
+(./mtr-02.aux)
+ ***********
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
+ ***********
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `mtr-02.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `mtr-02.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  4F431AEE495845048F169EDD7E8777D9;7934.
+ ) 
+Here is how much of TeX's memory you used:
+ 12587 strings out of 473190
+ 208314 string characters out of 5715801
+ 640002 words of memory out of 5000000
+ 35595 multiletter control sequences out of 15000+600000
+ 570966 words of font info for 83 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 90i,12n,93p,1472b,614s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></
+usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></us
+r/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr
+/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/
+local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/lo
+cal/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/loca
+l/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/
+texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/te
+xlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texl
+ive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texliv
+e/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2
+025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2025/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2025/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2025/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2025/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2025/texmf-dist/
+fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2025/texmf-dist/fo
+nts/type1/public/cm-super/sftt1000.pfb>
+Output written on mtr-02.pdf (15 pages, 368365 bytes).
+PDF statistics:
+ 299 PDF objects out of 1000 (max. 8388607)
+ 233 compressed objects within 3 object streams
+ 104 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
