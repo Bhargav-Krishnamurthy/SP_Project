@@ -523,16 +523,16 @@ M. C. Hanumantharaju, M. Ravishankar and D. R. Rameshbabu,
 
 Following the initial architectural design laid out in the preceding sections of PPR-02, we have realized and validated the core modules of the Color Balance and Fusion pipeline across both software simulation and hardware RTL domains. Specifically, we have implemented:
 \begin{enumerate}
-    \item \textbf{Complete End-to-End Python Golden Model (\texttt{CODES/PYTHON\_IMPLEMENTATION}):} A fully functional algorithmic implementation incorporating red-channel compensation, Gray World white balance with dynamic percentile stretching, dual-input generation (gamma expansion and normalized unsharp masking), multi-weight aggregation (Laplacian contrast, frequency-tuned saliency, and saturation), and 5-level Gaussian/Laplacian multi-scale pyramid fusion.
-    \item \textbf{Standalone Verilog White Balancing Accelerator (\texttt{CODES/WHITEBALANCING}):} A cycle-accurate hardware core running at 100\,MHz on the AMD Spartan-7 FPGA (RealDigital Boolean Board), featuring a 3-pass FSM, restoring sequential dividers, in-place dual-port Block RAM frame buffering ($256\times256\times24$-bit), and 115200-baud UART transmission, achieving 100\% bit-exact verification ($\text{MAE}=0.0$, $\text{PSNR}=\infty$) against software golden calculations.
-    \item \textbf{Verilog Gamma Correction Subsystem (\texttt{CODES/GAMMA\_CORRECTION}):} An on-chip 256-entry synchronous Block RAM look-up table delivering single-cycle deterministic remapping ($100\,\text{MSamples/s}$).
-    \item \textbf{Verilog Streaming Normalized Unsharp Masking Core (\texttt{CODES/Normalized\_Unsharp\_Masking}):} A dual line-buffered $3\times3$ sliding-window Gaussian blur and high-pass normalization module operating on continuous raster video streams without CPU intervention.
+    \item \textbf{Complete End-to-End Python Model (\texttt{PYTHON\_IMPLEMENTATION}):} A fully functional algorithmic implementation incorporating red-channel compensation, Gray World white balance with dynamic percentile stretching, dual-input generation (gamma expansion and normalized unsharp masking).
+    \item \textbf{Standalone Verilog White Balancing Accelerator (\texttt{WHITEBALANCING}):} A cycle-accurate hardware core running at 100\,MHz on the AMD Spartan-7 FPGA (RealDigital Boolean Board), featuring a 3-pass FSM, restoring sequential dividers, in-place dual-port Block RAM frame buffering ($256\times256\times24$-bit), and 115200-baud UART transmission, achieving 100\% bit-exact verification ($\text{MAE}=0.0$, $\text{PSNR}=\infty$) against software golden calculations.
+    \item \textbf{Verilog Gamma Correction Subsystem (\texttt{GAMMA\_CORRECTION}):} verilog code to perform gamma correction using a look-up table (LUT).
+    \item \textbf{Verilog Streaming Normalized Unsharp Masking Core (\texttt{Normalized\_Unsharp\_Masking}):} A dual line-buffered $3\times3$ sliding-window Gaussian blur and high-pass normalization module.
 \end{enumerate}
 
-\subsection{Python Golden Implementation and Multi-Scale Fusion}
+\subsection{Python Implementation}
 \label{subsec:python_impl}
 
-The Python implementation in \texttt{CODES/PYTHON\_IMPLEMENTATION/pythoncode.ipynb} serves as our bit-exact software golden reference and evaluates the complete 5-octave multi-scale fusion pipeline.
+The Python implementation serves as our bit-exact software golden reference and evaluates the complete 5-octave multi-scale fusion pipeline.
 
 \textbf{1. White Balancing and Percentile Contrast Stretching:} 
 The degraded RGB frame ($256\times256$) is first compensated along the red channel according to \cref{eq:redcomp}. To remove the strong residual illuminant veil, each channel is scaled towards a target mean $\mu_{target} = 0.5$ using \cref{eq:grayworld}, followed by dynamic percentile histogram stretching between the 1st and 99th percentiles:
@@ -556,7 +556,7 @@ From the white-balanced image $I_{wb}$, two candidate inputs are derived:
 For both inputs $I_k$ ($k \in \{1, 2\}$), three quality metrics are computed:
 \begin{itemize}
     \item \textbf{Laplacian Contrast Weight ($W_L$):} Discrete $3\times 3$ Laplacian operator on the luminance channel $L_k = 0.2126\,R + 0.7152\,G + 0.0722\,B$ via \cref{eq:wl}.
-    \item \textbf{Saliency Weight ($W_S$):} Achanta frequency-tuned saliency~\cite{achanta2009frequency} computed as the Euclidean distance between pixel Lab color and the global mean Lab vector:
+    \item \textbf{Saliency Weight ($W_S$):} Frequency-tuned saliency~\cite{achanta2009frequency} computed as the Euclidean distance between pixel Lab color and the global mean Lab vector:
     \begin{equation}
       W_S(x) = \|\mathbf{Lab}_{blurred}(x) - \mu_{\mathbf{Lab}}\|_2
     \end{equation}
@@ -566,13 +566,6 @@ Each weight is normalized to $[0, 1]$ and aggregated into $W_k(x) = \mathcal{N}\
 \begin{equation}
   \tilde{W}_k(x) = \frac{W_k(x) + \delta}{W_1(x) + W_2(x) + 2\delta}
 \end{equation}
-
-\textbf{4. Multi-Scale Pyramid Fusion:} 
-To prevent seam artifacts, a 5-level multi-scale pyramid ($256 \rightarrow 128 \rightarrow 64 \rightarrow 32 \rightarrow 16$) is constructed using OpenCV \texttt{pyrDown} and \texttt{pyrUp}. Gaussian pyramids are generated for weights $\{G^l(\tilde{W}_k)\}_{l=0}^4$, and Laplacian pyramids for inputs $\{L^l(I_k)\}_{l=0}^4$. Blending is performed independently at each scale:
-\begin{equation}
-  L_{fused}^l(x) = G^l(\tilde{W}_1(x)) L^l(I_1(x)) + G^l(\tilde{W}_2(x)) L^l(I_2(x))
-\end{equation}
-The final enhanced output is reconstructed by recursively expanding and summing the fused Laplacian pyramid from level 4 down to level 0.
 
 \begin{figure}[t]
   \centering
@@ -585,32 +578,40 @@ The final enhanced output is reconstructed by recursively expanding and summing 
   \hfill
   \begin{subfigure}{0.48\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{white_balance_out.png}
+    \includegraphics[width=\linewidth]{white_balance_2.png}
     \caption{FPGA White Balanced}
     \label{fig:res_cont_wb}
   \end{subfigure}
   \vskip\baselineskip
   \begin{subfigure}{0.48\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{gamma_out.png}
-    \caption{Gamma Corrected ($I_1$)}
+    \includegraphics[width=\linewidth]{white_balance_out.png}
+    \caption{Percentile-stretched white balanced output}
     \label{fig:res_cont_gamma}
   \end{subfigure}
   \hfill
   \begin{subfigure}{0.48\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{python_fused_out.png}
-    \caption{Full Fused Output}
+    \includegraphics[width=\linewidth]{gamma_out.png}
+    \caption{Gamma Corrected}
     \label{fig:res_cont_fused}
   \end{subfigure}
-  \caption{Visual progression through the implemented underwater image enhancement pipeline.}
+  \caption{}
   \label{fig:cont_results_progression}
+\end{figure} 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{python_fused_out.png}
+    \caption{Full Fused Output}
+    \label{fig:res_cont_fused}
 \end{figure}
+
 
 \subsection{White Balancing Accelerator RTL Design}
 \label{subsec:wb_rtl}
 
-The white balance accelerator (\texttt{CODES/WHITEBALANCING/\-underwater\_fpga\_top.v}) executes autonomously at 100\,MHz on the Spartan-7 (RealDigital Boolean board).
+The white balance accelerator (\texttt{underwater\_fpga\_top.v}) executes autonomously at 100\,MHz on the Spartan-7 (RealDigital Boolean board).
 
 \textbf{1. Memory Organization:} A $256\times256\times24$-bit synchronous Block RAM (\texttt{image\_mem}) stores the active frame ($65,536$ addresses). It is pre-loaded via \texttt{\$readmemh("image.mem", image\_mem)}.
 
@@ -628,7 +629,7 @@ The white balance accelerator (\texttt{CODES/WHITEBALANCING/\-underwater\_fpga\_
       y = \text{clamp}\!\left( x + \left\lfloor\frac{(\bar{I}_g - \bar{I}_x)(255 - x)I_g}{65025}\right\rfloor, 0, 255 \right)
       \label{eq:comp_hw_cont}
     \end{equation}
-    To close timing at 100\,MHz, multiplications are pipelined across two clock cycles ($t_1 = \Delta \cdot (255-x)$ and $t_2 = t_1 \cdot I_g$). Integer division by 65,025 is executed by an unsigned restoring divider.
+    To close timing at 100\,MHz, multiplications are pipelined across two clock cycles ($t_1 = \Delta \cdot (255-x)$ and $t_2 = t_1 \cdot I_g$). Integer division by 65,025 is approximated to integer division by 65,536. This allows us to instead implement a 16-bit right shift, which massively speeds up the process, which would otherwise take large amount of time to execute a classical division through digital logic.
     \item \textbf{Gray World Unit (\texttt{gw\_ch}):} Computes $y = \min(255, \lfloor \text{pixel} \times T / \bar{I}_{ch}\rfloor)$ using an 8-bit multiplier followed by sequential division, returning 0 if $\bar{I}_{ch} = 0$.
     \item \textbf{Sequential Divider (\texttt{div\_seq}):} A non-restoring shift-subtract divider parameterized by numerator bit-width $NW$ and denominator bit-width $DW$. By determining 1 quotient bit per cycle, large combinational division delays and heavy DSP usage are avoided.
 \end{itemize}
@@ -638,13 +639,13 @@ The white balance accelerator (\texttt{CODES/WHITEBALANCING/\-underwater\_fpga\_
 \subsection{Gamma Correction Subsystem RTL}
 \label{subsec:gamma_rtl}
 
-In \texttt{CODES/GAMMA\_CORRECTION/gamma\_lut.v}, gamma correction is realized using a 256-byte Block RAM lookup table initialized from \texttt{gamma\_lut.mem} with $y = \text{round}(255 \cdot (x/255)^\gamma)$. 
-The module \texttt{gamma\_image\_processor.v} streams image bytes sequentially through the LUT, completing a channel transformation on every clock cycle with a deterministic 1-cycle read latency.
+In \texttt{CODES/GAMMA\_CORRECTION/gamma\_lut.v}, gamma correction is realized using a 256-byte Block RAM lookup table initialized from \texttt{gamma\_lut.mem} with $y = \text{round}(255 \cdot (x/255)^\gamma)$ , $\gamma = 0.8$ . 
+The module \texttt{gamma\_image\_processor.v} streams image bytes sequentially through the LUT, completing intensity correction.
 
 \subsection{Normalized Unsharp Masking Core RTL}
 \label{subsec:unsharp_rtl}
 
-The unsharp masking engine (\texttt{CODES/Normalized\_Unsharp\_Masking}) applies real-time edge sharpening without requiring a full second frame buffer:
+The unsharp masking engine (\texttt{Normalized\_Unsharp\_Masking}) applies real-time edge sharpening without requiring a full second frame buffer:
 \begin{itemize}
     \item \textbf{2D Sliding Window Generator (\texttt{sliding\_window.v}):} Uses two synchronous line buffers (\texttt{line\_buf\_0} and \texttt{line\_buf\_1}) of size $IMG\_WIDTH = 256$ pixels. As pixels stream serially, line buffers hold the previous two scan lines, allowing three shift registers to present a full $3\times3$ spatial window $[0:2][0:2]$ simultaneously for Red, Green, and Blue channels on each clock.
     \item \textbf{Gaussian Convolution and High-Pass Scaling (\texttt{normalized\_unsharp\_masking.v}):} The $3\times3$ kernel approximates a 2D Gaussian filter:
@@ -659,89 +660,10 @@ The unsharp masking engine (\texttt{CODES/Normalized\_Unsharp\_Masking}) applies
     The sharpened pixel is obtained via $I_2 = \lfloor(I_{center} + hp) / 2\rfloor$, executing in a single clock cycle without DSP multipliers.
 \end{itemize}
 
-\subsection{Experimental Verification and Hardware Synthesis}
-\label{subsec:exp_verification}
-
-\textbf{1. Bit-Exact Verification of White Balancing:} 
-To verify the Spartan-7 white balance hardware against software calculations, an automated verification harness (\texttt{golden\_check.py}) was executed. The test harness evaluates the mathematical integer model of \cref{eq:comp_hw_cont} and Gray World scaling against the raw 196,608-byte stream received over UART from the FPGA board.
-
-\begin{table*}[t]
-  \centering
-  \small
-  \caption{Bit-level verification of White Balance Engine across 65,536 image pixels.}
-  \label{tab:wb_verification_cont}
-  \begin{tabular}{lc}
-    \toprule
-    Metric & Observed Value \\
-    \midrule
-    Total Pixels Tested & 65,536 ($256 \times 256$) \\
-    Total Channel Bytes Transmitted & 196,608 bytes \\
-    Channel Format & 24-bit RGB (8-bit per channel) \\
-    Mismatch Count ($>0$ LSB error) & \textbf{0 pixels (0.000\%)} \\
-    Mean Absolute Error (MAE) & \textbf{0.000000} \\
-    Peak Signal-to-Noise Ratio (PSNR) & \textbf{$\infty$ (Identical)} \\
-    Hardware Baud Rate & 115,200 baud \\
-    UART Transfer Duration & $\approx 17.06$ seconds \\
-    \bottomrule
-  \end{tabular}
-\end{table*}
-
-As shown in \cref{tab:wb_verification_cont}, exactly \textbf{zero mismatches} were observed across all 65,536 pixels, demonstrating that our Verilog fixed-point FSM, pipeline stages, and serial division arithmetic match software calculations with zero bit drift.
-
-\textbf{2. Quantitative Pipeline Progression:} 
-Table~\ref{tab:stat_summary_cont} reports the mean intensity and dynamic range across each stage of the enhancement pipeline on real underwater imagery.
-
-\begin{table*}[t]
-  \centering
-  \small
-  \caption{Luminance and dynamic range progression in Python golden model.}
-  \label{tab:stat_summary_cont}
-  \begin{tabular}{lccc}
-    \toprule
-    Stage & Mean Intensity & Dynamic Range & Visual Quality \\
-    \midrule
-    Raw Input & 0.384 & $[0.08, 0.72]$ & Severe blue-green cast \\
-    Red Comp. & 0.412 & $[0.10, 0.75]$ & Red content restored \\
-    White Balanced & 0.498 & $[0.00, 1.00]$ & Neutral illumination \\
-    Input 1 ($\gamma$) & 0.582 & $[0.02, 1.00]$ & Expanded dark details \\
-    Input 2 (Unsharp) & 0.495 & $[0.00, 1.00]$ & Sharpened edges \\
-    \textbf{Final Fused} & \textbf{0.521} & $\mathbf{[0.01, 0.99]}$ & \textbf{Optimal visual clarity} \\
-    \bottomrule
-  \end{tabular}
-\end{table*}
-
-The normalized weight distributions showed an average contribution of $\mu(\tilde{W}_1) = 0.487$ and $\mu(\tilde{W}_2) = 0.513$, demonstrating that both gamma correction and unsharp masking contribute balanced information to the fused reconstruction.
-
-\textbf{3. FPGA Resource Utilization:} 
-The synthesized resource utilization on the AMD Spartan-7 (XC7S50CSGA324-1) target is summarized in \cref{tab:resource_spartan_cont}.
-
-\begin{table*}[t]
-  \centering
-  \small
-  \caption{Estimated hardware resource utilization on AMD Spartan-7 (XC7S50).}
-  \label{tab:resource_spartan_cont}
-  \begin{tabular}{lccc}
-    \toprule
-    Hardware Module & LUTs & FFs & BRAM (36Kb) \\
-    \midrule
-    White Balance Engine (\texttt{underwater\_fpga\_top}) & $\sim$1,850 & $\sim$1,420 & 43.0 \\
-    Gamma LUT Engine (\texttt{gamma\_image\_processor}) & $\sim$90 & $\sim$65 & 0.5 \\
-    Unsharp Masking (\texttt{sliding\_window} + filter) & $\sim$480 & $\sim$390 & 2.0 \\
-    UART Transmitter (\texttt{uart\_tx}) & $\sim$85 & $\sim$60 & 0.0 \\
-    \midrule
-    \textbf{Total Implemented Resources} & $\mathbf{\sim 2,505}$ & $\mathbf{\sim 1,935}$ & $\mathbf{45.5}$ \\
-    Available on XC7S50 & 32,600 & 65,200 & 75.0 \\
-    \textbf{Utilization (\%)} & \textbf{7.68\%} & \textbf{2.97\%} & \textbf{60.67\%} \\
-    \bottomrule
-  \end{tabular}
-\end{table*}
-
-The design utilizes under 8\% of available logic LUTs and under 3\% of flip-flops, confirming that the remaining FPGA fabric can readily accommodate on-chip weight map generation and naive fusion logic.
-
 \subsection{Current Status and Final Phase Roadmap}
 \label{subsec:roadmap_cont}
 
-With the software golden reference validated and the white balancing, gamma correction, and unsharp masking hardware modules completed, our roadmap for the final project phase comprises:
+With the software reference validated and the white balancing, gamma correction, and unsharp masking hardware modules completed, our roadmap for the final project phase comprises:
 \begin{itemize}
     \item Cascading the white balance engine output directly into the gamma LUT and unsharp masking streaming engines in hardware.
     \item Implementing on-chip weight evaluation and naive pixel fusion ($W_1 \cdot I_1 + W_2 \cdot I_2$) using Spartan-7 DSP48E1 slices.
